@@ -214,15 +214,33 @@ public class IntInstrument {
     public Instrument ToInstrument(){
         Instrument.Builder newInstrumentBuilder = Instrument.newBuilder();
 
-        newInstrumentBuilder.setSecurityID(this.getSecurityID());
-        newInstrumentBuilder.setDescription(this.getDescription());
-        newInstrumentBuilder.setISINCode(this.getIsinCode());
-        newInstrumentBuilder.setCUSIP(this.getCusip());
-        newInstrumentBuilder.setMarketID(this.getMarketID());
-        newInstrumentBuilder.setSectionID(this.getSectionID());
-        newInstrumentBuilder.setTradeClass(this.getTradeClass());
-        newInstrumentBuilder.setCurrency(this.getCurrency());
-        newInstrumentBuilder.setIssuer(this.getIssuer());
+        if (this.securityID!= null){
+            newInstrumentBuilder.setSecurityID(this.getSecurityID());
+        }
+        if (this.description!= null){
+            newInstrumentBuilder.setDescription(this.getDescription());
+        }
+        if (this.isinCode != null){
+            newInstrumentBuilder.setISINCode(this.getIsinCode());
+        }
+        if (this.cusip!= null){
+            newInstrumentBuilder.setCUSIP(this.getCusip());
+        }
+        if (this.marketID!= null){
+            newInstrumentBuilder.setMarketID(this.getMarketID());
+        }
+        if (this.sectionID!= null){
+            newInstrumentBuilder.setSectionID(this.getSectionID());
+        }
+        if (this.tradeClass!= null){
+            newInstrumentBuilder.setTradeClass(this.getTradeClass());
+        }
+        if (this.currency!= null){
+            newInstrumentBuilder.setCurrency(this.getCurrency());
+        }
+        if (this.issuer!=null){
+            newInstrumentBuilder.setIssuer(this.getIssuer());
+        }
         newInstrumentBuilder.setClass_Value((int)this.getInstrumentClass());
         newInstrumentBuilder.setPriceTick(this.getPriceTick());
         newInstrumentBuilder.setQtyTick(this.getQtyTick());
@@ -233,7 +251,9 @@ public class IntInstrument {
         newInstrumentBuilder.setTradingStartDate(this.getTradingStartDate());
         newInstrumentBuilder.setTradingStopDate(this.getTradingStopDate());
         newInstrumentBuilder.setYieldTick(this.getYieldTick());
-        newInstrumentBuilder.setBenchmarkSecurityID(this.getBenchmarkSecurityID());
+        if (this.benchmarkSecurityID!= null){
+            newInstrumentBuilder.setBenchmarkSecurityID(this.getBenchmarkSecurityID());
+        }
 
         Instrument newInstrument = newInstrumentBuilder.build();
         return newInstrument;
