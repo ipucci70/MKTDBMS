@@ -35,7 +35,7 @@ public class DBMSInstrument {
 
     public boolean connect() {
         if (!isConnected) {
-
+            isConnecting=true;
             try {
                 reader = Resources.getResourceAsReader("dbConfig.xml");
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
@@ -44,15 +44,13 @@ public class DBMSInstrument {
                 mapper = session.getMapper(InstrumentMapper.class);
 
                 isConnected=true;
+                isConnecting=false;
             }
             catch (IOException e) {
                 LOG.warn("Error getting instruments: {} ... (will retry again)\n{}",
                 e.getLocalizedMessage(),
                 Utils.stackTraceToString(e));
-                if (!isConnecting){
-                    isConnecting=true;
-                    tryScheduleReconnection();
-                }
+                tryScheduleReconnection();
                 return false;
             }
         }
