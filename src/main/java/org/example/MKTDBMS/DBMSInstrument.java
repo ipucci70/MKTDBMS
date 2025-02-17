@@ -33,7 +33,6 @@ public class DBMSInstrument {
         return isConnected;
     }
 
-
     public boolean connect() {
         if (!isConnected) {
 
@@ -43,11 +42,6 @@ public class DBMSInstrument {
 
                 session = sqlSessionFactory.openSession();
                 mapper = session.getMapper(InstrumentMapper.class);
-
-                // Insert a new employee
-                //IntInstrument newEmployee = new Employee(2, "Jane Smith", "IT", 60000);
-                //mapper.insertEmployee(newEmployee);
-                //session.commit();
 
                 isConnected=true;
             }
@@ -101,6 +95,17 @@ public class DBMSInstrument {
         }
     }
 
+    public boolean waitForConnection() {
+        synchronized (this) {
+            while (isConnecting) {
+                try {
+                    this.wait();
+                } catch (InterruptedException ignored) { }
+            }
+        }
+        return true;
+    }
+
     @FunctionalInterface
     public interface InstrumentCallback{
         void handle(Instrument instrument);
@@ -112,6 +117,33 @@ public class DBMSInstrument {
             instrumentCallback.handle(intInstrument.ToInstrument());
         }
         return true;
+    }
+
+    public void InsertNewInstrument(Instrument instrument){
+        IntInstrument newIntInstrument = new IntInstrument(
+            instrument.getSecurityID(),
+            instrument.getDescription(),
+            instrument.getISINCode(),
+            instrument.getCUSIP(),
+            instrument.getMarketID(),
+            instrument.getSectionID(),
+            instrument.getTradeClass(),
+            instrument.getCurrency(),
+            instrument.getIssuer(),
+            (long)instrument.getClass_Value(),
+            instrument.getPriceTick(),
+            instrument.getQtyTick(),
+            instrument.getMinTradableQty(),
+            instrument.getLotSize(),
+            instrument.getClosingPrice(),
+            instrument.getIssueDate(),
+            instrument.getTradingStartDate(),
+            instrument.getTradingStopDate(),
+            instrument.getYieldTick(),
+            instrument.getBenchmarkSecurityID()
+        );
+        mapper.insertInstrument(newIntInstrument);
+        session.commit();
     }
 
     public DBMSInstrument() { }
