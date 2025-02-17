@@ -6,7 +6,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>MKTDBMS</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -17,7 +17,7 @@
     <repositories>
         <repository>
             <id>github-artifacts</id>
-            <url>https://github.com/ipucci70/MKTUtils/releases/tag/0.1.0</url>
+            <url>https://github.com/ipucci70/MKTUtils/releases/tag/0.1.2</url>
         </repository>
     </repositories>
 
@@ -75,12 +75,12 @@
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>MKTBus</artifactId>
-            <version>0.1.3</version>
+            <version>0.1.4</version>
         </dependency>
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>MKTUtils</artifactId>
-            <version>0.1.0</version>
+            <version>0.1.2</version>
         </dependency>
     </dependencies>
 </project>

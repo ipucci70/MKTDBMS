@@ -1,6 +1,7 @@
-package org.example.lightadaptercip.utils;
+package org.example;
+
 import java.util.List;
-import org.example.lightadaptercip.utils.IntInstrument;
+import org.example.IntInstrument;
 
 import org.apache.ibatis.annotations.*;
 
@@ -30,7 +31,7 @@ public interface InstrumentMapper {
         "YieldTick,"+
         "BenchmarkSecurityID"+
     ") VALUES (" +
-        "#{securityID}," + 
+        "#{securityID}," +
         "#{description}," +
         "#{isinCode}," +
         "#{cusip}," +
