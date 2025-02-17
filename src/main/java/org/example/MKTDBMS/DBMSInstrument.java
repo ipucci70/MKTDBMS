@@ -1,4 +1,4 @@
-package org.example;
+package org.example.MKTDBMS;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -12,8 +12,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.example.InstrumentMapper;
-import org.example.IntInstrument;
+import org.example.MKTDBMS.InstrumentMapper;
+import org.example.MKTDBMS.IntInstrument;
 import org.example.Utils;
 import org.example.Market.Instrument;
 

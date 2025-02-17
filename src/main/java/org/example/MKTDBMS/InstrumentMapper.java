@@ -1,7 +1,7 @@
-package org.example;
+package org.example.MKTDBMS;
 
 import java.util.List;
-import org.example.IntInstrument;
+import org.example.MKTDBMS.IntInstrument;
 
 import org.apache.ibatis.annotations.*;
 

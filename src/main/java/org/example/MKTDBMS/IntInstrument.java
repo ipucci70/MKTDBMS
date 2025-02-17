@@ -1,4 +1,4 @@
-package org.example;
+package org.example.MKTDBMS;
 
 import org.example.Market.Instrument;
 import org.example.Market.InstrumentOrBuilder;
@@ -212,7 +212,7 @@ public class IntInstrument {
     }
 
     public Instrument ToInstrument(){
-        Market.Instrument.Builder newInstrumentBuilder = Instrument.newBuilder();
+        Instrument.Builder newInstrumentBuilder = Instrument.newBuilder();
 
         newInstrumentBuilder.setSecurityID(this.getSecurityID());
         newInstrumentBuilder.setDescription(this.getDescription());
