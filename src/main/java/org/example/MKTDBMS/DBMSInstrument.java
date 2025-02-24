@@ -37,7 +37,7 @@ public class DBMSInstrument {
         if (!isConnected) {
             isConnecting=true;
             try {
-                reader = Resources.getResourceAsReader("dbConfig.xml");
+                reader = Resources.getResourceAsReader("config/dbConfig.xml");
                 sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 
                 session = sqlSessionFactory.openSession();
