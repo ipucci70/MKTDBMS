@@ -1,5 +1,6 @@
 package org.example.MKTDBMS;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.List;
@@ -20,7 +21,7 @@ import org.example.Market.Instrument;
 public class DBMSInstrument {
     private static final Logger LOG = LogManager.getLogger(DBMSInstrument.class);
 
-    private Reader reader;
+    private FileReader reader;
     private SqlSessionFactory sqlSessionFactory;
     private SqlSession session;
     private InstrumentMapper mapper;
@@ -37,14 +38,17 @@ public class DBMSInstrument {
         if (!isConnected) {
             isConnecting=true;
             try {
-                reader = Resources.getResourceAsReader("dbConfig.xml");
-                sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
+                FileReader reader = new FileReader("config/dbConfig.xml");
 
-                session = sqlSessionFactory.openSession();
-                mapper = session.getMapper(InstrumentMapper.class);
+                if (reader != null){
+                    sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 
-                isConnected=true;
-                isConnecting=false;
+                    session = sqlSessionFactory.openSession();
+                    mapper = session.getMapper(InstrumentMapper.class);
+    
+                    isConnected=true;
+                    isConnecting=false;
+                }
             }
             catch (IOException e) {
                 LOG.warn("Error getting instruments: {} ... (will retry again)\n{}",
