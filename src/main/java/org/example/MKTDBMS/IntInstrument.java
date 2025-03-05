@@ -1,7 +1,7 @@
 package org.example.MKTDBMS;
 
-import org.example.Market.Instrument;
-import org.example.Market.InstrumentOrBuilder;
+import org.example.Market.MarketInstrument;
+import org.example.Market.MarketInstrumentOrBuilder;
 
 public class IntInstrument {
     private String securityID;
@@ -211,8 +211,8 @@ public class IntInstrument {
         this.benchmarkSecurityID= benchmarkSecurityID;
     }
 
-    public Instrument ToInstrument(){
-        Instrument.Builder newInstrumentBuilder = Instrument.newBuilder();
+    public MarketInstrument ToMarketInstrument(){
+        MarketInstrument.Builder newInstrumentBuilder = MarketInstrument.newBuilder();
 
         if (this.securityID!= null){
             newInstrumentBuilder.setSecurityID(this.getSecurityID());
@@ -255,7 +255,7 @@ public class IntInstrument {
             newInstrumentBuilder.setBenchmarkSecurityID(this.getBenchmarkSecurityID());
         }
 
-        Instrument newInstrument = newInstrumentBuilder.build();
-        return newInstrument;
+        MarketInstrument newMarketInstrument = newInstrumentBuilder.build();
+        return newMarketInstrument;
     }
 }

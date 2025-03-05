@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 import org.example.MKTDBMS.InstrumentMapper;
 import org.example.MKTDBMS.IntInstrument;
 import org.example.Utils;
-import org.example.Market.Instrument;
+import org.example.Market.MarketInstrument;
 
 public class DBMSInstrument {
     private static final Logger LOG = LogManager.getLogger(DBMSInstrument.class);
@@ -110,39 +110,39 @@ public class DBMSInstrument {
 
     @FunctionalInterface
     public interface InstrumentCallback{
-        void handle(Instrument instrument);
+        void handle(MarketInstrument marketInstrument);
     }
 
     public boolean getAllInstruments(InstrumentCallback instrumentCallback){
         List<IntInstrument> instruments = mapper.getAllInstruments();
         for (IntInstrument intInstrument : instruments) {
-            instrumentCallback.handle(intInstrument.ToInstrument());
+            instrumentCallback.handle(intInstrument.ToMarketInstrument());
         }
         return true;
     }
 
-    public void InsertNewInstrument(Instrument instrument){
+    public void InsertNewInstrument(MarketInstrument marketInstrument){
         IntInstrument newIntInstrument = new IntInstrument(
-            instrument.getSecurityID(),
-            instrument.getDescription(),
-            instrument.getISINCode(),
-            instrument.getCUSIP(),
-            instrument.getMarketID(),
-            instrument.getSectionID(),
-            instrument.getTradeClass(),
-            instrument.getCurrency(),
-            instrument.getIssuer(),
-            (long)instrument.getClass_Value(),
-            instrument.getPriceTick(),
-            instrument.getQtyTick(),
-            instrument.getMinTradableQty(),
-            instrument.getLotSize(),
-            instrument.getClosingPrice(),
-            instrument.getIssueDate(),
-            instrument.getTradingStartDate(),
-            instrument.getTradingStopDate(),
-            instrument.getYieldTick(),
-            instrument.getBenchmarkSecurityID()
+            marketInstrument.getSecurityID(),
+            marketInstrument.getDescription(),
+            marketInstrument.getISINCode(),
+            marketInstrument.getCUSIP(),
+            marketInstrument.getMarketID(),
+            marketInstrument.getSectionID(),
+            marketInstrument.getTradeClass(),
+            marketInstrument.getCurrency(),
+            marketInstrument.getIssuer(),
+            (long)marketInstrument.getClass_Value(),
+            marketInstrument.getPriceTick(),
+            marketInstrument.getQtyTick(),
+            marketInstrument.getMinTradableQty(),
+            marketInstrument.getLotSize(),
+            marketInstrument.getClosingPrice(),
+            marketInstrument.getIssueDate(),
+            marketInstrument.getTradingStartDate(),
+            marketInstrument.getTradingStopDate(),
+            marketInstrument.getYieldTick(),
+            marketInstrument.getBenchmarkSecurityID()
         );
         mapper.insertInstrument(newIntInstrument);
         session.commit();
