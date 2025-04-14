@@ -6,10 +6,10 @@ import org.example.MKTDBMS.IntInstrument;
 import org.apache.ibatis.annotations.*;
 
 public interface InstrumentMapper {
-    @Select("SELECT * FROM INSTRUMENT")
+    @Select("SELECT * FROM MARKETINSTRUMENT")
     List<IntInstrument> getAllInstruments();
 
-    @Insert("INSERT INTO INSTRUMENT (" +
+    @Insert("INSERT INTO MARKETINSTRUMENT (" +
         "SecurityID," +
         "Description,"+
         "ISINCode,"+
