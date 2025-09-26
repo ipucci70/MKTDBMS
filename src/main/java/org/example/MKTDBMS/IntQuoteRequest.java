@@ -6,7 +6,7 @@ import org.example.Market.MarketLegVerb;
 import org.example.Market.MarketProcessStatus;
 import org.example.Market.MarketQuoteLegOrBuilder;
 import org.example.Market.MarketQuoteRequest;
-import org.example.Market.MarketQuoteRequestStatus;;
+import org.example.Market.MarketQuoteRequestStatus;
 
 public class IntQuoteRequest {
     String quoteRequestID;
